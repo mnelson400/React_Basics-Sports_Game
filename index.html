@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Sports Game</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/babel">
+
+function App (props) {
+  return (
+    <div>
+      <h1>React Sports Game</h1>
+    </div>
+  )
+}
+
+// NORMAL MODE
+// The Team Component:
+// In order to play this game, you are going to need to create teams so 
+// they can compete for the win. Below is an outline of the functionality 
+// that our team component should include.
+//  1. Create a stateful Team component that accepts 
+//     a name and a path to a logo for the team as a prop.
+//  2. This component should display the team name 
+//     and the logo provided through props.
+//  3. The Team component should also display some stats about the team.
+//     A. It should display the number of Shots Taken.
+//     B. It should display the Score for the team.
+//  4. The Team component should have a Shoot button. We don't score 
+//     every time we shoot so let's discuss the shoot buttons functionality.
+//     A. When a shot is taken the Shots Taken count should always increase.
+//     b. There should be a random chance that the Score counter increases.
+//  5. Make sure to render and test your Team component functionality as you add new features.
+
+// Setup our battle of the sports teams:
+// Now that we have a Default component that represents our Application and we 
+// have created our Team component, we can start assembling the game.
+//  1. Update the default App component you created to display 2 teams, 
+//     the home team and the visiting team.
+//  2. Use your knowledge of HTML and CSS to make the page look more like 
+//     a game where two teams, home and visiting, are facing off in competition.
+//  3. Verify both teams are displayed and keeping track of their stats.
+
+// MEDIUM MODE
+// Let's add some extra functionality to our sports game:
+//  1. Add functionality to make a sound play when a team shoots and a different 
+//     sound when a team scores. The resources below should help accomplish this.
+//     A. HTML audio element on MDN:
+//        https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+//     B. Free sound effects:
+//        https://www.freesoundeffects.com/free-sounds/sports-10098/
+//  2. Let's add an additonal statistic to our teams. Let's display a Shot Percentage 
+//     metric. This should be shots attempted divided by shots scored.
+//     A. This metric should only display if a shot has been taken. This should not 
+//        be visible if the team has not attempted to make a shot.
+//  3. Create a Game Component that accepts a venue name as a prop.
+//  4. Update your default component that is currently displaying your teams to display 
+//     the Game component instead. And move everything the default component was 
+//     displaying into the Game component.
+//  5. Update the Game component to display "Welcome to" followed by the name of 
+//     the venue passed in as a prop.
+//  6. Your app should still render the default component with ReactDOM.render(), 
+//     commonly named App.
+//     A. The default App component should only render the Game component instead 
+//        of rendering the Team components as before.
+//     B. The Game component should display the venue name for the game and the 
+//        Team components that were previously displayed in the default App component.
+//     C. Each team should function as before but now conditionally display a Shot 
+//        Percentage metric if a shot has been taken by the team.
+//  7. Think about what would happen if we added another Game component to our App. 
+//     We could change the Venue name but we can only create new games with the 
+//     same teams. What could we modify in the Game and Team components to allow 
+//     us to have unique teams for each game we include in our default App component?
+
