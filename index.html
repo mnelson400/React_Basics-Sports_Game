@@ -3,26 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>React Sports Game</title>
 </head>
 <body>
+    <!-- include an element for ReactDOM to attach our React-generated elements to -->
     <div id="root"></div>
 
+    <!-- include React and ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- include Babel standalone so we can process JSX in React.createElement stuff -->
     <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-<script type="text/babel">
+    <!-- include our JS+JSX for the React Appliccation -->
+    <script type="text/babel">
 
-function App (props) {
-  return (
-    <div>
-      <h1>React Sports Game</h1>
-    </div>
-  )
-}
+        class Team extends React.Component {
+            constructor (props) {
+                super (props);
 
-// NORMAL MODE
+                this.state = {
+                   shots: 0,
+                   score: 0
+                }
+
+                this.frontMiss = new Audio ('./sounds/fhk_miss.mp3')
+                this.frontScore = new Audio ('./sounds/fhk_score.mp3')
+            }
+
+
+            shotHandler = () => {
+                let score = this.state.score
+                this.frontMiss.play ()
+
+                if (Math.random () > 0.5) {
+                    score += 2;
+                }
+
+                this.setState ((state, props) => ({
+                    shots: state.shots + 1,
+                    score: score
+                }))
+            }
+
+            render () {
+                let shootPercentDiv 
+                if (this.state.shots) {
+                    const shootPercent = Math.round ((this.state.score / 2) / this.state.shots * 100);
+                    shootPercentDiv = (
+                        <div>
+                        <strong>Shooting %: {shootPercent}</strong>    
+                        </div>
+                    )
+                }
+
+                return (
+                    <div className= "Team">
+
+                        <h2>{this.props.name}</h2>
+
+                        <div className= "identity">
+                            <img src = {this.props.logo} alt = {this.props.name} />
+                        </div>
+
+                        <div>
+                            <strong>Shots: </strong> {this.state.shots}  
+                        </div>
+
+                        <div>
+                            <strong>Score: </strong> {this.state.score}   
+                        </div>
+
+                        {shootPercentDiv}
+
+                        <button onClick = {this.shotHandler} >Shoot!</button>
+
+                    </div>
+                )
+            }
+        }
+
+        function Game (props) {
+            return (
+                <div className = 'Game'>
+                    <h1>Welcome to {props.venue}</h1>
+
+                    <div className = 'stats'>
+                        <Team name = {props.homeTeam.name} logo = {props.homeTeam.logoSrc} />    
+                        <Team name = {props.visitTeam.name} logo = {props.visitTeam.logoSrc} />    
+                        <Team name = {props.homeTeam.name} logo = {props.homeTeam.logoSrc} />     
+                        <Team name = {props.visitTeam.name} logo = {props.visitTeam.logoSrc} />     
+                    </div>    
+                    
+                </div>
+            )
+        }
+        
+// An App component under which all other components will be added
+        function App (props) {
+            const FHK = {
+                name: 'Front-Half Kenzie',
+                logoSrc: './images/basket_ball1.png'
+            }
+
+            const BHK = {
+                name: 'Back-Half Kenzie',
+                logoSrc: './images/basket_ball2.png'
+            }
+
+            const FHD = {
+                name: 'Front-Half Days',
+                logoSrc: './images/basket_ball1.png'
+            }
+
+            const FHN = {
+                name: 'Front-Half Nights',
+                logoSrc: './images/basket_ball2.png'
+            }
+
+            return (
+                <div className = "App">
+                    <Game venue = 'Kenzie Stadium' homeTeam = {FHK} visitTeam = {BHK} />
+                    <Game venue = 'Amazon Center' homeTeam = {FHD} visitTeam = {FHN} />
+                </div>
+            )
+        }
+
+    
+
+// Render the App
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        )
+
+    </script>
+
+</body>
+</html>
+
+<!-- // NORMAL MODE
 // The Team Component:
 // In order to play this game, you are going to need to create teams so 
 // they can compete for the win. Below is an outline of the functionality 
@@ -44,9 +167,9 @@ function App (props) {
 // Now that we have a Default component that represents our Application and we 
 // have created our Team component, we can start assembling the game.
 //  1. Update the default App component you created to display 2 teams, 
-//     the home team and the visiting team.
+//     the homeTeam team and the visiting team.
 //  2. Use your knowledge of HTML and CSS to make the page look more like 
-//     a game where two teams, home and visiting, are facing off in competition.
+//     a game where two teams, homeTeam and visiting, are facing off in competition.
 //  3. Verify both teams are displayed and keeping track of their stats.
 
 // MEDIUM MODE
@@ -78,5 +201,5 @@ function App (props) {
 //  7. Think about what would happen if we added another Game component to our App. 
 //     We could change the Venue name but we can only create new games with the 
 //     same teams. What could we modify in the Game and Team components to allow 
-//     us to have unique teams for each game we include in our default App component?
+//     us to have unique teams for each game we include in our default App component? -->
 
