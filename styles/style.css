@@ -10,7 +10,7 @@
     top: -90px;
     background-image: url(../images/backdrop.png);
     background-repeat: no-repeat;
-    z-index: 1;
+    z-index: -1;
     
 }
 
@@ -26,7 +26,7 @@
     top: 245px;
     left: 14px;
     margin: auto;
-    z-index: 3;
+    z-index: 4;
 
 }
 
@@ -42,7 +42,7 @@
     top: 244px;
     left: 697px;
     margin: auto;
-    z-index: 3;
+    z-index: 4;
 
 }
 

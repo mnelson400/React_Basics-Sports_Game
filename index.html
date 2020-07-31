@@ -61,25 +61,60 @@
                 }
 
                 return (
-                    <div className= "Team">
+                    <div>
 
                         <h2>{this.props.name}</h2>
 
-                        <div className= "identity">
-                            <img src = {this.props.logo} alt = {this.props.name} />
+                        <div className = "controls">
+                            <div className = "control_l">
+                                <img className = "team_one_shoot_button" 
+                                    onClick = {this.shotHandler} 
+                                    src = {this.props.logo} 
+                                    alt = {this.props.name} 
+                                />
+                            </div>
+
+                            <div className = "control_r">
+                                <img className = "team_two_shoot_button" 
+                                    onClick = {this.shotHandler} 
+                                    src = {this.props.logo} 
+                                    alt = {this.props.name} 
+                                />
+                            </div>
+
+                            <div className = "reset-container">
+                                <div className = "reset-button"></div> 
+                            </div>
+
+                            <div className = "resets-qty">
+                                <div className = "num-resets"></div>
+                            </div>
+
                         </div>
 
-                        <div>
-                            <strong>Shots: </strong> {this.state.shots}  
+                        <div className = "body"> 
+                            <div className = "top">
+                                <div className = "scoreboard">
+                                    <div className = "specs1">
+                                        <div className = "shots1">
+                                            <div className = "teamone-numshots">{this.state.shots}</div> 
+                                        </div>
+                                        <div className = "goals1">  
+                                            <div className = "teamone-numgoals">{this.state.score}</div>
+                                        </div> 
+                                    </div> 
+
+                                    <div className = "specs2">
+                                        <div className = "shots2">  
+                                            <div className = "teamtwo-numshots"></div>
+                                        </div>
+                                        <div className = "goals2"> 
+                                            <div className = "teamtwo-numgoals"></div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>  
                         </div>
-
-                        <div>
-                            <strong>Score: </strong> {this.state.score}   
-                        </div>
-
-                        {shootPercentDiv}
-
-                        <button onClick = {this.shotHandler} >Shoot!</button>
 
                     </div>
                 )
@@ -94,8 +129,6 @@
                     <div className = 'stats'>
                         <Team name = {props.homeTeam.name} logo = {props.homeTeam.logoSrc} />    
                         <Team name = {props.visitTeam.name} logo = {props.visitTeam.logoSrc} />    
-                        <Team name = {props.homeTeam.name} logo = {props.homeTeam.logoSrc} />     
-                        <Team name = {props.visitTeam.name} logo = {props.visitTeam.logoSrc} />     
                     </div>    
                     
                 </div>
@@ -144,6 +177,7 @@
 
 </body>
 </html>
+
 
 <!-- // NORMAL MODE
 // The Team Component:
